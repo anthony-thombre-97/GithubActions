@@ -12,6 +12,16 @@ on:
   workflow_dispatch:
 
 jobs:
+  #Test Job
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Run node command
+        run: node -e "console.log('running from node!')"
   # First job
   build:
     # The type of runner that the job will run on
@@ -28,12 +38,4 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Run node command
-        run: node -e "console.log('running from node!')"
+
